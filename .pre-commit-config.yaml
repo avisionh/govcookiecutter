@@ -11,7 +11,10 @@ repos:
     hooks:
     -   id: detect-secrets
         args: ['--baseline', '.secrets.baseline']
-        exclude: .*/tests/.*
+        exclude: >
+            (?x)^(
+            .*/tests/.*
+            )$
 -   repo: https://github.com/aflc/pre-commit-jupyter
     rev: v1.1.0
     hooks:
@@ -26,4 +29,5 @@ repos:
     -   id: check-added-large-files
         args: ['--maxkb=5120']
     -   id: end-of-file-fixer
+        exclude: '\.Rd'
     -   id: trailing-whitespace
